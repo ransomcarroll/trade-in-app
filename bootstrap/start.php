@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(function(){
 
-	return $_ENV['TRADE_APP'];
+	return $_ENV['TRADE_APP'] ?: 'local';
 
 });
 

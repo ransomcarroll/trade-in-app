@@ -1,0 +1,19 @@
+<?php
+
+use Faker\Factory as Faker;
+
+class ClubsTableSeeder extends Seeder {
+
+    public function run()
+    {
+        $faker = Faker::create();
+
+        foreach(range(1, 10) as $index)
+        {
+            Club::create([
+
+            ]);
+        }
+    }
+
+}
