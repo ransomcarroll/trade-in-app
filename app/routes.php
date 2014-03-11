@@ -13,5 +13,5 @@
 
 Route::get('/', function()
 {
-	return $_ENV['TEST'];
+	return View::make('index');
 });
