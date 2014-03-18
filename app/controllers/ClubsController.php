@@ -9,7 +9,9 @@ class ClubsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$clubs = Club::all();
+
+		return View::make('clubs')->withClubs($clubs);
 	}
 
 	/**

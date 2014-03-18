@@ -12,3 +12,26 @@
  * @description  Front end styles for GolfMundo Trade In Administration
  *
  **/
+ section {
+ 	margin: 0 auto;
+ 	max-width:1240px;
+ }
+.form-signin {
+	max-width:330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.form-signin .form-control {
+	height: auto;
+	position: relative;
+	padding: 10px;
+ }
+ .form-signin button span {
+	top: 2px;
+	margin-left: 10px;
+ }

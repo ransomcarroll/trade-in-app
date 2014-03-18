@@ -20,4 +20,38 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function showDashboard()
+	{
+		return View::make('dashboard');
+	}
+
+	public function showLogin()
+	{
+		return View::make('login');
+	}
+
+	public function login()
+	{
+		$input = [
+		    'email'    => Input::get( 'email' ), // May be the username too
+		    'password' => Input::get( 'password' )
+		];
+
+		if (Auth::attempt(array('email' => $input['email'], 'password' => $input['password'])))
+		{
+		    return Redirect::intended('dashboard');
+		}
+		else
+		{
+			return Redirect::to('login')->withLoginNotification(['type'=>'danger','message'=>'Invalid Login Credentials']);
+		}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+
+		return Redirect::to('login');
+	}
+
 }

@@ -5,20 +5,19 @@
 </head>
 
 <body class='@yield('bodyclass')' id="master">
-<div class="comtainer">
+<div class="container">
 	<header class="row">
 		<div class="col-lg-12">
 			@include('partials.nav')
 		</div>
 	</header>
 	<div class="row">
-		<aside class="col-lg-4">
-			[side navigation]
-		</aside>
-		<section class="col-md-8">
-			@if (Session::has('flash_message'))
-				<div class="flash-message">
-					{{ Session::get('flash_message') }}
+		<section class="col-lg-12">
+			@if (Session::has('notification'))
+				<?php $alertType = Session::get('notification.type'); ?>
+				<div class="flash-message alert alert-{{$alertType}} alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					{{ Session::get('notification.message') }}
 				</div>
 			@endif
 

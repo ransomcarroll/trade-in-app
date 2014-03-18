@@ -1,7 +1,7 @@
 <?php
 
 class Club extends \Eloquent {
-    protected $fillable = [];
+    protected $fillable = ["type","condition","brand","model","shaft","value","length","orientation"];
 
     public function type()
     {

@@ -15,3 +15,15 @@ Route::get('/', function()
 {
 	return View::make('index');
 });
+
+Route::get('login', ['as'=>'login','uses'=>'HomeController@showLogin']);
+Route::get('logout', ['as'=>'logout','uses'=>'HomeController@logout']);
+Route::post('login', ['as'=>'do_login','uses'=>'HomeController@login']);
+
+Route::group(array('before' => 'auth'), function()
+{
+	Route::get('dashboard','HomeController@showDashboard');
+	Route::get('users','UsersController@index');
+	Route::get('clubs','ClubsController@index');
+
+});
