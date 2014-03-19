@@ -1,7 +1,8 @@
 <?php
 
-class Types extends \Eloquent {
-    protected $fillable = [];
+class Type extends \Eloquent {
+
+    protected $fillable = ["name"];
 
     public function club()
     {

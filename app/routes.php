@@ -25,5 +25,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('dashboard','HomeController@showDashboard');
 	Route::get('users','UsersController@index');
 	Route::get('clubs','ClubsController@index');
+	Route::get('clubs/new','ClubsController@create');
 
 });

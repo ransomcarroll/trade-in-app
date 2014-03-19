@@ -1,7 +1,8 @@
 <?php
 
-class Conditions extends \Eloquent {
-    protected $fillable = [];
+class Condition extends \Eloquent {
+
+    protected $fillable = ["name"];
 
     public function club()
     {

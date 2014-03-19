@@ -21,7 +21,14 @@ class ClubsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+
+		$data = [
+			'conditions' => Condition::all()->lists('name'),
+			'types' => Type::all()->lists('name'),
+			'brands' => Brand::all()->lists('name')
+		];
+
+		return View::make('clubs.new',$data);
 	}
 
 	/**

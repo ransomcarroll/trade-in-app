@@ -1,7 +1,8 @@
 <?php
 
-class Brands extends \Eloquent {
-    protected $fillable = [];
+class Brand extends \Eloquent {
+
+    protected $fillable = ["name"];
 
     public function club()
     {
