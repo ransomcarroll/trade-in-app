@@ -16,12 +16,7 @@
 			[side navigation]
 		</aside>
 		<section class="col-md-8">
-			@if (Session::has('flash_message'))
-				<div class="flash-message">
-					{{ Session::get('flash_message') }}
-				</div>
-			@endif
-
+			@include('partials.notifications')
 			@yield('content')
 		</section>
 	</div>

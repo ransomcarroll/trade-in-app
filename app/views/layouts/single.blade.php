@@ -13,14 +13,7 @@
 	</header>
 	<div class="row">
 		<section class="col-lg-12">
-			@if (Session::has('notification'))
-				<?php $alertType = Session::get('notification.type'); ?>
-				<div class="flash-message alert alert-{{$alertType}} alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					{{ Session::get('notification.message') }}
-				</div>
-			@endif
-
+			@include('partials.notifications')
 			@yield('content')
 		</section>
 	</div>

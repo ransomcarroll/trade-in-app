@@ -26,5 +26,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('users','UsersController@index');
 	Route::get('clubs','ClubsController@index');
 	Route::get('clubs/new','ClubsController@create');
+	Route::post('clubs/new',['as'=>'clubs.store','uses'=>'ClubsController@store','before'=>'csrf']);
 
 });

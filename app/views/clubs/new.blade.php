@@ -4,7 +4,7 @@
 
 @section('content')
 	<h1>New Club</h1>
-	{{ Form::open() }}
+	{{ Form::open(['route'=>'clubs.store','files'=>true]) }}
 		<div class="form-group col-lg-4 col-md-4 col-sm-6">
 			{{ Form::label('type','Club Type') }}
 			{{ Form::select('type',$types,null,['class'=>'form-control']) }}
@@ -37,6 +37,8 @@
 			{{ Form::label('orientation','Orientation (left/right)') }}
 			{{ Form::select('orientation',['left','right'],null,['class'=>'form-control']) }}
 		</div>
+
+	{{ Form::button('<span class="glyphicon glyphicon-plus"></span> Add Club',['class'=>'btn btn-primary','type'=>'submit']) }}
 
 	{{ Form::close() }}
 @stop
