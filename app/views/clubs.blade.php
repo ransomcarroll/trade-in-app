@@ -8,6 +8,7 @@
 		<table class="table table-striped">
 			<tbody>
 				<thead>
+					<th>ID</th>
 					<th>Type</th>
 					<th>Condition</th>
 					<th>Brand</th>
@@ -20,9 +21,10 @@
 				</thead>
 				@foreach($clubs as $club)
 					<tr>
-						<td>{{ $club->type }}</td>
-						<td>{{ $club->condition }}</td>
-						<td>{{ $club->brand }}</td>
+						<td>{{ $club->id }} </td>
+						<td>{{ $club->type->name }}</td>
+						<td>{{ $club->condition->name }}</td>
+						<td>{{ $club->brand->name }}</td>
 						<td>{{ $club->model }}</td>
 						<td>{{ $club->shaft }}</td>
 						<td>{{ $club->value }}</td>

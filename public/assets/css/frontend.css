@@ -35,3 +35,7 @@
 	top: 2px;
 	margin-left: 10px;
  }
+ form .btn{
+ 	float: left;
+ 	clear: both;
+ }

@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             @if(Auth::user())
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown hidden">
                         <a href="/trades" class="dropdown-toggle" data-toggle="dropdown">Trade-Ins <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/trades"><span class="glyphicon glyphicon-th-large"></span> All Trade-Ins</a></li>
@@ -30,6 +30,15 @@
                         <ul class="dropdown-menu">
                             <li><a href="/clubs"><span class="glyphicon glyphicon-th-large"></span> All Clubs</a></li>
                             <li><a href="/clubs/new"><span class="glyphicon glyphicon-plus"></span> Add New Club</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/types"><span class="glyphicon glyphicon-settings"></span> Manage Club Types</a></li>
+                            <li><a href="/types/new"><span class="glyphicon glyphicon-plus"></span> Add New Club Type</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/conditions"><span class="glyphicon glyphicon-settings"></span> Manage Club Conditions</a></li>
+                            <li><a href="/conditions/new"><span class="glyphicon glyphicon-plus"></span> Add New Club Condition</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/brands"><span class="glyphicon glyphicon-settings"></span> Manage Club Brands</a></li>
+                            <li><a href="/brands/new"><span class="glyphicon glyphicon-plus"></span> Add New Club Brand</a></li>
                         </ul>
                     </li>
                 </ul>

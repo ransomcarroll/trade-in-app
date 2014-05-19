@@ -1,4 +1,4 @@
-@if(Session::has('notification'))
+@if(Session::has('notification.message'))
 	<div class="flash-message alert alert-{{Session::get('notification.type')}}">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		{{ Session::get('notification.message') }}

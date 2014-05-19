@@ -9,9 +9,10 @@ class ClubsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$clubs = Club::all();
-
-		return View::make('clubs')->withClubs($clubs);
+		$data = [
+			'clubs' => Club::with('type')->get()
+		];
+		return View::make('clubs')->with($data);
 	}
 
 	/**
@@ -39,6 +40,7 @@ class ClubsController extends \BaseController {
 	public function store()
 	{
 		$input = Input::except('_token');
+		$orientations = ['left','right'];
 		$validator = Validator::make(
 		    array(
 		        'type' => $input['type'],
@@ -48,7 +50,7 @@ class ClubsController extends \BaseController {
 		        'shaft' => $input['shaft'],
 		        'value' => $input['value'],
 		        'length' => $input['length'],
-		        'orientation' => $input['orientation']
+		        'orientation' => $orientations[$input['orientation']]
 		    ),
 		    array(
 		        'type' => 'required',
@@ -69,6 +71,7 @@ class ClubsController extends \BaseController {
 	    	];
 	        return Redirect::to('clubs/new')->with($notifications)->withInput();
 	    }
+	    $input['orientation'] = $orientations[$input['orientation']];
 		$club = new Club;
 		$club->create($input);
 		$notifications = [
@@ -97,7 +100,14 @@ class ClubsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data = [
+			'conditions' => Condition::all()->lists('name'),
+			'types' => Type::all()->lists('name'),
+			'brands' => Brand::all()->lists('name'),
+			'club' => Club::find($id)
+		];
+
+		return View::make('clubs.edit')->with($data);
 	}
 
 	/**
@@ -108,7 +118,46 @@ class ClubsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token');
+		$orientations = ['left','right'];
+		$validator = Validator::make(
+		    array(
+		        'type' => $input['type'],
+		        'condition' => $input['condition'],
+		        'brand' => $input['brand'],
+		        'model' => $input['model'],
+		        'shaft' => $input['shaft'],
+		        'value' => $input['value'],
+		        'length' => $input['length'],
+		        'orientation' => $orientations[$input['orientation']]
+		    ),
+		    array(
+		        'type' => 'required',
+		        'condition' => 'required',
+		        'brand' => 'required',
+		        'model' => 'required',
+		        'shaft' => 'required',
+		        'value' => 'required|numeric',
+		        'length' => 'required|numeric',
+		        'orientation' => 'required'
+		    )
+		);
+		if ($validator->fails())
+	    {
+	    	$notifications = [
+	    		'notification.type'=>'danger',
+	    		'notification.message'=>$validator->messages()->first()
+	    	];
+	        return Redirect::to("clubs/edit/$id")->with($notifications)->withInput();
+	    }
+	    $input['orientation'] = $orientations[$input['orientation']];
+		$club = Club::find($id);
+		$club->update($input);
+		$notifications = [
+			'notification.type'=>'success',
+			'notification.message'=>"Club #$id was updated successfully!"
+		];
+		return Redirect::to('clubs/')->with($notifications);
 	}
 
 	/**

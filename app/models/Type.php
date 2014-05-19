@@ -3,9 +3,11 @@
 class Type extends \Eloquent {
 
     protected $fillable = ["name"];
+    protected $table = "club_types";
 
     public function club()
     {
-    	return $this->belongsTo('Club');
+    	return $this->belongsToMany('Club');
     }
+
 }
